@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration  scan="true" scanPeriod="60 seconds" debug="false">
+
+    <!--設置 Log 輸出格式-->
+    <property name="PATTERN_FORMAT" value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %highlight(%-5level) %yellow(%class{36} %L %M) - %msg%xEx%n"/>
+
+    <contextName>logback</contextName>
+    <!--輸出到 Console-->
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${PATTERN_FORMAT}</pattern>
+        </encoder>
+    </appender>
+
+    <!--輸出到檔案-->
+    <appender name="info" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>log/%d{yyyy-MM-dd}.%i.zip</fileNamePattern>
+            <!-- each file should be at most 1GB, keep 30 days worth of history, but at most 3GB -->
+            <maxHistory>40</maxHistory>
+            <timeBasedFileNamingAndTriggeringPolicy
+                    class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>1GB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+            <totalSizeCap>30GB</totalSizeCap>
+            <cleanHistoryOnStart>true</cleanHistoryOnStart>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %class{36} %L %M - %msg%xEx%n</pattern>
+        </encoder>
+    </appender>
+
+    <!--輸出到檔案-->
+    <appender name="error" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>log/%d{yyyy-MM-dd}-error.%i.zip</fileNamePattern>
+            <!-- each file should be at most 1GB, keep 30 days worth of history, but at most 3GB -->
+            <maxHistory>40</maxHistory>
+            <timeBasedFileNamingAndTriggeringPolicy
+                    class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>1GB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+            <totalSizeCap>30GB</totalSizeCap>
+            <cleanHistoryOnStart>true</cleanHistoryOnStart>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %class{36} %L %M - %msg%xEx%n</pattern>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>error</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+    </appender>
+
+    <logger name="org.hibernate.engine.jdbc.spi.SqlExceptionHelper" additivity="false" level="INFO" />
+
+    <root level="info">
+        <appender-ref ref="console" />
+        <appender-ref ref="info" />
+        <appender-ref ref="error" />
+    </root>
+
+</configuration>

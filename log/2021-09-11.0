@@ -1,0 +1,65 @@
+21:53:48.052 [restartedMain] INFO  o.s.boot.StartupInfoLogger 48 logStarting - Starting Application on DESKTOP-1N2T5BM with PID 27112 (C:\Users\Sheng\Desktop\gcpWebServer\target\classes started by Sheng in C:\Users\Sheng\Desktop\gcpWebServer)
+21:53:48.054 [restartedMain] INFO  o.s.boot.SpringApplication 593 logStartupProfileInfo - No active profile set, falling back to default profiles: default
+21:53:48.447 [restartedMain] INFO  o.s.c.s.AbstractApplicationContext 583 prepareRefresh - Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@3e8d2552: startup date [Sat Sep 11 21:53:48 CST 2021]; root of context hierarchy
+21:53:48.538 [background-preinit] INFO  o.h.validator.internal.util.Version 30 <clinit> - HV000001: Hibernate Validator 5.3.5.Final
+21:53:49.899 [restartedMain] INFO  o.s.b.f.a.AutowiredAnnotationBeanPostProcessor 155 <init> - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+21:53:50.969 [restartedMain] INFO  o.s.b.c.e.t.TomcatEmbeddedServletContainer 89 initialize - Tomcat initialized with port(s): 443 (https) 80 (http)
+21:53:50.981 [restartedMain] INFO  org.apache.juli.logging.DirectJDKLog 179 log - Starting service [Tomcat]
+21:53:50.983 [restartedMain] INFO  org.apache.juli.logging.DirectJDKLog 179 log - Starting Servlet Engine: Apache Tomcat/8.5.20
+21:53:51.102 [localhost-startStop-1] INFO  org.apache.juli.logging.DirectJDKLog 179 log - Initializing Spring embedded WebApplicationContext
+21:53:51.103 [localhost-startStop-1] INFO  o.s.b.c.e.EmbeddedWebApplicationContext 276 prepareEmbeddedWebApplicationContext - Root WebApplicationContext: initialization completed in 2657 ms
+21:53:51.346 [localhost-startStop-1] INFO  o.s.b.w.s.AbstractFilterRegistrationBean 258 configure - Mapping filter: 'characterEncodingFilter' to: [/*]
+21:53:51.346 [localhost-startStop-1] INFO  o.s.b.w.s.AbstractFilterRegistrationBean 258 configure - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+21:53:51.347 [localhost-startStop-1] INFO  o.s.b.w.s.AbstractFilterRegistrationBean 258 configure - Mapping filter: 'httpPutFormContentFilter' to: [/*]
+21:53:51.347 [localhost-startStop-1] INFO  o.s.b.w.s.AbstractFilterRegistrationBean 258 configure - Mapping filter: 'requestContextFilter' to: [/*]
+21:53:51.348 [localhost-startStop-1] INFO  o.s.b.w.s.AbstractFilterRegistrationBean 258 configure - Mapping filter: 'springSecurityFilterChain' to: [/*]
+21:53:51.349 [localhost-startStop-1] INFO  o.s.b.w.s.ServletRegistrationBean 190 onStartup - Mapping servlet: 'dispatcherServlet' to [/]
+21:53:51.350 [localhost-startStop-1] INFO  o.s.b.w.s.ServletRegistrationBean 190 onStartup - Mapping servlet: 'webServlet' to [/h2-console/*]
+21:53:51.490 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean 349 createNativeEntityManagerFactory - Building JPA container EntityManagerFactory for persistence unit 'default'
+21:53:51.511 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper 31 logPersistenceUnitInformation - HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+21:53:51.614 [restartedMain] INFO  org.hibernate.Version 37 logVersion - HHH000412: Hibernate Core {5.0.12.Final}
+21:53:51.616 [restartedMain] INFO  org.hibernate.cfg.Environment 213 <clinit> - HHH000206: hibernate.properties not found
+21:53:51.618 [restartedMain] INFO  org.hibernate.cfg.Environment 317 buildBytecodeProvider - HHH000021: Bytecode provider name : javassist
+21:53:51.802 [restartedMain] INFO  o.h.a.c.r.java.JavaReflectionManager 66 <clinit> - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+21:53:52.194 [restartedMain] INFO  org.hibernate.dialect.Dialect 156 <init> - HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+21:53:52.396 [restartedMain] INFO  o.h.tool.hbm2ddl.SchemaUpdate 105 execute - HHH000228: Running hbm2ddl schema update
+21:53:52.448 [restartedMain] INFO  o.s.o.j.AbstractEntityManagerFactoryBean 379 buildNativeEntityManagerFactory - Initialized JPA EntityManagerFactory for persistence unit 'default'
+21:53:52.870 [restartedMain] WARN  o.s.c.s.AbstractApplicationContext 551 refresh - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'authenticationProvider' defined in class path resource [sheng/gcp/web/server/config/SecurityConfiguration.class]: Invocation of init method failed; nested exception is java.lang.IllegalArgumentException: A UserDetailsService must be set
+21:53:52.870 [restartedMain] INFO  o.s.o.j.AbstractEntityManagerFactoryBean 548 destroy - Closing JPA EntityManagerFactory for persistence unit 'default'
+21:53:52.876 [restartedMain] INFO  org.apache.juli.logging.DirectJDKLog 179 log - Stopping service [Tomcat]
+21:53:52.893 [restartedMain] INFO  o.s.b.a.l.AutoConfigurationReportLoggingInitializer 101 logAutoConfigurationReport - 
+
+Error starting ApplicationContext. To display the auto-configuration report re-run your application with 'debug' enabled.
+21:53:52.899 [restartedMain] ERROR o.s.boot.SpringApplication 771 reportFailure - Application startup failedorg.springframework.beans.factory.BeanCreationException: Error creating bean with name 'authenticationProvider' defined in class path resource [sheng/gcp/web/server/config/SecurityConfiguration.class]: Invocation of init method failed; nested exception is java.lang.IllegalArgumentException: A UserDetailsService must be set
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1628)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:555)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:483)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:197)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:761)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:867)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:543)
+	at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.refresh(EmbeddedWebApplicationContext.java:122)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:693)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:360)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:303)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1118)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1107)
+	at sheng.gcp.web.server.Application.main(Application.java:24)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
+Caused by: java.lang.IllegalArgumentException: A UserDetailsService must be set
+	at org.springframework.util.Assert.notNull(Assert.java:134)
+	at org.springframework.security.authentication.dao.DaoAuthenticationProvider.doAfterPropertiesSet(DaoAuthenticationProvider.java:105)
+	at org.springframework.security.authentication.dao.AbstractUserDetailsAuthenticationProvider.afterPropertiesSet(AbstractUserDetailsAuthenticationProvider.java:123)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1687)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1624)
+	... 21 common frames omitted
+
