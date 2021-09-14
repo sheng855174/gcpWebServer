@@ -7,9 +7,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import sheng.gcp.web.server.common.HttpCommon;
-import sheng.gcp.web.server.common.HttpReceiver;
-import sheng.gcp.web.server.common.LoggerOutputFormat;
+import sheng.gcp.web.server.common.*;
 import sheng.gcp.web.server.model.goldbook.entity.Role;
 import sheng.gcp.web.server.model.goldbook.entity.User;
 import sheng.gcp.web.server.service.goodbook.UserService;
@@ -29,15 +27,56 @@ public class UserController {
     private BCryptPasswordEncoder passwordEncoder;
 
     @GetMapping("/login")
-    public String login(HttpServletRequest httpServletRequest) {
-        log.info(HttpCommon.getIpAddr(httpServletRequest) + " 請求登入頁面");
+    public String login(HttpServletRequest request) {
+        log.info(HttpCommon.getIpAddr(request) + " 請求登入頁面");
         return "login";
     }
 
     @GetMapping("/register")
-    public String register(HttpServletRequest httpServletRequest) {
-        log.info(HttpCommon.getIpAddr(httpServletRequest) + " 請求註冊頁面");
+    public String register(HttpServletRequest request) {
+        log.info(HttpCommon.getIpAddr(request) + " 請求註冊頁面");
         return "register";
+    }
+
+    @GetMapping("/forgotPassword")
+    public String forgotPassword(HttpServletRequest request) {
+        LoggerOutputFormat.api_before(request, "/forgotPassword");
+        return "forgotPassword";
+    }
+
+    @PostMapping("/forgotPassword")
+    public String resetPassword(HttpServletRequest request) {
+        LoggerOutputFormat.api_before(request,"post /forgotPassword");
+        try{
+            JSONObject data = HttpReceiver.receiveData(request);
+            log.info(data.toString());
+            // 比對資料
+            User user = userService.findByUsername(data.getString("username"));
+            if(user!= null && user.getEmail().equals(data.getString("email"))){
+                // 發送新密碼
+                String password = Generater.generatePassword();
+                user.setPassword(passwordEncoder.encode(password));
+                userService.save(user);
+                log.info("密碼重置 : " + user);
+                // 發送email
+                new Thread(() -> {
+                    try {
+                        SmtpGmail.send(user.getEmail(),"情侶契約書密碼重置通知",password);
+                    } catch (Exception e) {
+                        log.error("post /forgotPassword error : ",e);
+                    }
+                }).start();
+            }
+            else {
+                //不存在帳號及電子郵件
+                log.info("不存在帳號及電子郵件");
+                return "redirect:forgotPassword?no_exist";
+            }
+        }catch (Exception e){
+            LoggerOutputFormat.api_error(request,"post /forgotPassword",e);
+            return "redirect:login?api_error";
+        }
+        return "redirect:login?success_password";
     }
 
     @GetMapping("/contract")
@@ -71,7 +110,7 @@ public class UserController {
             roles.add(new Role(data.getString("username"),"USER"));
             user.setRoles(roles);
             userService.save(user);
-            log.info("註冊成功 : " );
+            log.info("註冊成功 : " + user);
         }catch (Exception e){
             LoggerOutputFormat.api_error(request,"post /userRegister",e);
             return "redirect:register?api_error";

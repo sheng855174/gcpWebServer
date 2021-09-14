@@ -21,6 +21,8 @@
     </a>
     <!-- success -->
     <font th:if="${param.success}" style="color:green" class="text-xl font-semibold text-center">註冊成功!</font>
+    <!-- success password -->
+    <font th:if="${param.success_password}" style="color:green" class="text-xl font-semibold text-center">密碼重置成功!正在發送Email</font>
     <!-- api error -->
     <font th:if="${param.api_error}" style="color:red" class="text-xl font-semibold text-center">未知錯誤，請稍後再試。(操作異常或是網路異常)</font>
     <!-- error -->
@@ -59,7 +61,7 @@
               </div>
               <span class="ml-3 text-sm font-normal text-gray-500 dark:text-gray-400">Remember me</span>
             </label>
-            <a href="#" class="text-sm text-blue-600 hover:underline">忘記密碼?</a>
+            <a href="/forgotPassword" class="text-sm text-blue-600 hover:underline">忘記密碼?</a>
           </div>
           <div>
             <button

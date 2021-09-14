@@ -11,10 +11,10 @@ import javax.servlet.http.HttpServletRequest;
 @Slf4j
 public class MainController {
 
-    @GetMapping({"/", "/index"})
+    @GetMapping({"/", "/index","/main/index"})
     public String index(HttpServletRequest request) {
         LoggerOutputFormat.api_before(request, "/index");
-        return "index";
+        return "main/index";
     }
 
 }

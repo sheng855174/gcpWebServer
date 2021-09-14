@@ -1,12 +1,11 @@
 package sheng.gcp.web.server.common;
 
-public class Generater {
+public class Generater{
 
     private static final String passwordChar =
             "ABCDEFGHIJKLMNOPQRSTUVWXYZ" +
             "abcdefghijklmnopqrstuvwxyz" +
-            "01234567890123456789" +
-            "~!@#$%^&*+-~!@#$%^&*+-";
+            "01234567890123456789";
 
     private static final int password_num = 12;
 

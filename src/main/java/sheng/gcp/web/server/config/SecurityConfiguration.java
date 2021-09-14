@@ -37,7 +37,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                     ,"/build/**"
                     ,"/register"
                     ,"/userRegister"
-                    ,"/contract").permitAll()
+                    ,"/contract"
+                    ,"/forgotPassword"
+                    ,"/dist/**"
+                    ,"/plugins/**").permitAll()
                     .anyRequest().authenticated()
                 .and()
                     .formLogin()
