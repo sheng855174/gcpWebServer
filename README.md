@@ -8,3 +8,6 @@ v1.0.0-release
 
 v1.0.1-release
 忘記密碼
+
+v1.0.2-release
+密碼修改

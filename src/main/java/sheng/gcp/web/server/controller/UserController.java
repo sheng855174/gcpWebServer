@@ -3,8 +3,12 @@ package sheng.gcp.web.server.controller;
 import com.alibaba.fastjson.JSONObject;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import sheng.gcp.web.server.common.*;
@@ -116,6 +120,37 @@ public class UserController {
             return "redirect:register?api_error";
         }
         return "redirect:login?success";
+    }
+
+    @PreAuthorize("hasAnyAuthority('USER')")
+    @GetMapping({"/user/resetPassword"})
+    public String resetPassword(HttpServletRequest request, Model model) {
+        LoggerOutputFormat.api_before(request, "/resetPassword");
+        return "user/resetPassword";
+    }
+
+    @PreAuthorize("hasAnyAuthority('USER')")
+    @PostMapping({"/user/resetPassword"})
+    public String resetPasswordPost(HttpServletRequest request, Model model) {
+        LoggerOutputFormat.api_before(request, "post /resetPassword");
+        try {
+            Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+            JSONObject data = HttpReceiver.receiveData(request);
+            log.info(auth.getName() + "修改密碼");
+            User user = userService.findByUsername(auth.getName());
+            String password = data.getString("password");
+            String confirmPassword = data.getString("confirmPassword");
+            if(!password.equals(confirmPassword)){
+                return "redirect:resetPassword?passwordDiff";
+            }
+            user.setPassword(passwordEncoder.encode(password));
+            userService.save(user);
+            log.info(user.toString());
+        }catch (Exception e){
+            LoggerOutputFormat.api_error(request,"post /resetPassword",e);
+            return "redirect:resetPassword?api_error";
+        }
+        return "redirect:resetPassword?success";
     }
 
 }
