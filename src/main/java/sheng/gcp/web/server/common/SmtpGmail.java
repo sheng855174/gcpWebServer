@@ -10,7 +10,7 @@ import javax.mail.internet.*;
 
 @Slf4j
 public class SmtpGmail {
-
+/*
     public static void send(String receiver, String title, String msg) throws Exception {
         log.info("發送mail開始..." + "收件人 : " + receiver + ", 主旨 : " + title);
 
@@ -47,7 +47,7 @@ public class SmtpGmail {
         props.put("mail.smtp.ssl.protocols", "TLSv1.2");
         return props;
     }
-/*
+
     public static void main(String[] argv){
         // 要先去開啟存取權限 https://myaccount.google.com/lesssecureapps
         try {

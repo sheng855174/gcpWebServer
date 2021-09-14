@@ -4289,3 +4289,175 @@ Using default security password: e3058c5f-cd73-490d-8bc0-0aa69f74db5a
 21:03:01.070 [https-jsse-nio-443-exec-10] INFO  s.g.w.s.controller.UserController 35 login - 127.0.0.1 請求登入頁面
 21:03:16.071 [https-jsse-nio-443-exec-1] INFO  s.g.w.s.controller.UserController 35 login - 127.0.0.1 請求登入頁面
 21:03:31.065 [https-jsse-nio-443-exec-8] INFO  s.g.w.s.controller.UserController 35 login - 127.0.0.1 請求登入頁面
+21:03:46.068 [https-jsse-nio-443-exec-2] INFO  s.g.w.s.controller.UserController 35 login - 127.0.0.1 請求登入頁面
+21:03:51.736 [Thread-7] INFO  o.s.c.s.AbstractApplicationContext 984 doClose - Closing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@6bfbe136: startup date [Tue Sep 14 20:57:38 CST 2021]; root of context hierarchy
+21:03:51.738 [Thread-7] INFO  o.s.jmx.export.MBeanExporter 449 destroy - Unregistering JMX-exposed beans on shutdown
+21:03:51.740 [Thread-7] INFO  o.s.o.j.AbstractEntityManagerFactoryBean 548 destroy - Closing JPA EntityManagerFactory for persistence unit 'default'
+21:03:53.193 [restartedMain] INFO  o.s.boot.StartupInfoLogger 48 logStarting - Starting Application on DESKTOP-1N2T5BM with PID 13476 (C:\Users\Sheng\Desktop\gcpWebServer\target\classes started by Sheng in C:\Users\Sheng\Desktop\gcpWebServer)
+21:03:53.194 [restartedMain] INFO  o.s.boot.SpringApplication 593 logStartupProfileInfo - No active profile set, falling back to default profiles: default
+21:03:53.198 [restartedMain] INFO  o.s.c.s.AbstractApplicationContext 583 prepareRefresh - Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@4854b369: startup date [Tue Sep 14 21:03:53 CST 2021]; root of context hierarchy
+21:03:54.534 [restartedMain] INFO  o.s.b.f.a.AutowiredAnnotationBeanPostProcessor 155 <init> - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+21:03:54.948 [restartedMain] INFO  o.s.b.c.e.t.TomcatEmbeddedServletContainer 89 initialize - Tomcat initialized with port(s): 443 (https) 80 (http)
+21:03:54.949 [restartedMain] INFO  org.apache.juli.logging.DirectJDKLog 179 log - Starting service [Tomcat]
+21:03:54.950 [restartedMain] INFO  org.apache.juli.logging.DirectJDKLog 179 log - Starting Servlet Engine: Apache Tomcat/8.5.20
+21:03:54.965 [localhost-startStop-1] INFO  org.apache.juli.logging.DirectJDKLog 179 log - Initializing Spring embedded WebApplicationContext
+21:03:54.966 [localhost-startStop-1] INFO  o.s.b.c.e.EmbeddedWebApplicationContext 276 prepareEmbeddedWebApplicationContext - Root WebApplicationContext: initialization completed in 1768 ms
+21:03:55.089 [localhost-startStop-1] INFO  o.s.b.w.s.AbstractFilterRegistrationBean 258 configure - Mapping filter: 'characterEncodingFilter' to: [/*]
+21:03:55.090 [localhost-startStop-1] INFO  o.s.b.w.s.AbstractFilterRegistrationBean 258 configure - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+21:03:55.090 [localhost-startStop-1] INFO  o.s.b.w.s.AbstractFilterRegistrationBean 258 configure - Mapping filter: 'httpPutFormContentFilter' to: [/*]
+21:03:55.091 [localhost-startStop-1] INFO  o.s.b.w.s.AbstractFilterRegistrationBean 258 configure - Mapping filter: 'requestContextFilter' to: [/*]
+21:03:55.092 [localhost-startStop-1] INFO  o.s.b.w.s.AbstractFilterRegistrationBean 258 configure - Mapping filter: 'springSecurityFilterChain' to: [/*]
+21:03:55.092 [localhost-startStop-1] INFO  o.s.b.w.s.ServletRegistrationBean 190 onStartup - Mapping servlet: 'dispatcherServlet' to [/]
+21:03:55.094 [localhost-startStop-1] INFO  o.s.b.w.s.ServletRegistrationBean 190 onStartup - Mapping servlet: 'webServlet' to [/h2-console/*]
+21:03:55.193 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean 349 createNativeEntityManagerFactory - Building JPA container EntityManagerFactory for persistence unit 'default'
+21:03:55.194 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper 31 logPersistenceUnitInformation - HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+21:03:55.724 [restartedMain] INFO  org.hibernate.dialect.Dialect 156 <init> - HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+21:03:55.780 [restartedMain] INFO  o.h.tool.hbm2ddl.SchemaUpdate 105 execute - HHH000228: Running hbm2ddl schema update
+21:03:56.112 [restartedMain] INFO  o.s.o.j.AbstractEntityManagerFactoryBean 379 buildNativeEntityManagerFactory - Initialized JPA EntityManagerFactory for persistence unit 'default'
+21:03:57.049 [restartedMain] INFO  o.s.w.s.m.m.a.RequestMappingHandlerAdapter 534 initControllerAdviceCache - Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@4854b369: startup date [Tue Sep 14 21:03:53 CST 2021]; root of context hierarchy
+21:03:57.108 [restartedMain] INFO  o.s.w.s.h.AbstractHandlerMethodMapping$MappingRegistry 543 register - Mapped "{[/ || /index || /main/index],methods=[GET]}" onto public java.lang.String sheng.gcp.web.server.controller.MainController.index(javax.servlet.http.HttpServletRequest,org.springframework.ui.Model)
+21:03:57.110 [restartedMain] INFO  o.s.w.s.h.AbstractHandlerMethodMapping$MappingRegistry 543 register - Mapped "{[/register],methods=[GET]}" onto public java.lang.String sheng.gcp.web.server.controller.UserController.register(javax.servlet.http.HttpServletRequest)
+21:03:57.110 [restartedMain] INFO  o.s.w.s.h.AbstractHandlerMethodMapping$MappingRegistry 543 register - Mapped "{[/forgotPassword],methods=[POST]}" onto public java.lang.String sheng.gcp.web.server.controller.UserController.resetPassword(javax.servlet.http.HttpServletRequest)
+21:03:57.111 [restartedMain] INFO  o.s.w.s.h.AbstractHandlerMethodMapping$MappingRegistry 543 register - Mapped "{[/user/resetPassword],methods=[GET]}" onto public java.lang.String sheng.gcp.web.server.controller.UserController.resetPassword(javax.servlet.http.HttpServletRequest,org.springframework.ui.Model)
+21:03:57.111 [restartedMain] INFO  o.s.w.s.h.AbstractHandlerMethodMapping$MappingRegistry 543 register - Mapped "{[/login],methods=[GET]}" onto public java.lang.String sheng.gcp.web.server.controller.UserController.login(javax.servlet.http.HttpServletRequest)
+21:03:57.111 [restartedMain] INFO  o.s.w.s.h.AbstractHandlerMethodMapping$MappingRegistry 543 register - Mapped "{[/userRegister],methods=[POST]}" onto public java.lang.String sheng.gcp.web.server.controller.UserController.userRegister(javax.servlet.http.HttpServletRequest)
+21:03:57.113 [restartedMain] INFO  o.s.w.s.h.AbstractHandlerMethodMapping$MappingRegistry 543 register - Mapped "{[/forgotPassword],methods=[GET]}" onto public java.lang.String sheng.gcp.web.server.controller.UserController.forgotPassword(javax.servlet.http.HttpServletRequest)
+21:03:57.113 [restartedMain] INFO  o.s.w.s.h.AbstractHandlerMethodMapping$MappingRegistry 543 register - Mapped "{[/contract],methods=[GET]}" onto public java.lang.String sheng.gcp.web.server.controller.UserController.contract(javax.servlet.http.HttpServletRequest)
+21:03:57.114 [restartedMain] INFO  o.s.w.s.h.AbstractHandlerMethodMapping$MappingRegistry 543 register - Mapped "{[/user/resetPassword],methods=[POST]}" onto public java.lang.String sheng.gcp.web.server.controller.UserController.resetPasswordPost(javax.servlet.http.HttpServletRequest,org.springframework.ui.Model)
+21:03:57.115 [restartedMain] INFO  o.s.w.s.h.AbstractHandlerMethodMapping$MappingRegistry 543 register - Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+21:03:57.116 [restartedMain] INFO  o.s.w.s.h.AbstractHandlerMethodMapping$MappingRegistry 543 register - Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+21:03:57.170 [restartedMain] INFO  o.s.w.s.h.AbstractUrlHandlerMapping 362 registerHandler - Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+21:03:57.171 [restartedMain] INFO  o.s.w.s.h.AbstractUrlHandlerMapping 362 registerHandler - Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+21:03:57.216 [restartedMain] INFO  o.s.w.s.h.AbstractUrlHandlerMapping 362 registerHandler - Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+21:03:57.491 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain 43 <init> - Creating filter chain: OrRequestMatcher [requestMatchers=[Ant [pattern='/css/**'], Ant [pattern='/js/**'], Ant [pattern='/images/**'], Ant [pattern='/webjars/**'], Ant [pattern='/**/favicon.ico'], Ant [pattern='/error']]], []
+21:03:57.519 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain 43 <init> - Creating filter chain: org.springframework.security.web.util.matcher.AnyRequestMatcher@1, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@192a8a26, org.springframework.security.web.context.SecurityContextPersistenceFilter@3b74f6af, org.springframework.security.web.header.HeaderWriterFilter@14a81b0b, org.springframework.security.web.authentication.logout.LogoutFilter@7558c52, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@a889bf5, org.springframework.security.web.session.ConcurrentSessionFilter@6c2e7e5, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@6f50c289, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1639acbf, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@64554e19, org.springframework.security.web.session.SessionManagementFilter@35c98b2f, org.springframework.security.web.access.ExceptionTranslationFilter@435fca98, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@6b0265bf]
+21:03:57.525 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain 43 <init> - Creating filter chain: Ant [pattern='/h2-console/**'], [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@39c8b93f, org.springframework.security.web.context.SecurityContextPersistenceFilter@1d6bbcc7, org.springframework.security.web.header.HeaderWriterFilter@479b8f0f, org.springframework.security.web.authentication.logout.LogoutFilter@347c87db, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@74319817, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@72c1f973, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@69b9f3d3, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@2b9d41bd, org.springframework.security.web.session.SessionManagementFilter@4992915e, org.springframework.security.web.access.ExceptionTranslationFilter@21d9c38a, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@75c66b2]
+21:03:57.528 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain 43 <init> - Creating filter chain: OrRequestMatcher [requestMatchers=[Ant [pattern='/**']]], [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@2bfc00c5, org.springframework.security.web.context.SecurityContextPersistenceFilter@3041ceb7, org.springframework.security.web.header.HeaderWriterFilter@60ced43e, org.springframework.security.web.authentication.logout.LogoutFilter@50fa2d95, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@6e70754b, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@6b909a7, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@10c0526a, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4659b520, org.springframework.security.web.session.SessionManagementFilter@6cc597f0, org.springframework.security.web.access.ExceptionTranslationFilter@7f62707, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@5eab0c26]
+21:03:58.183 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer 58 startServer - LiveReload server is running on port 35729
+21:03:58.235 [restartedMain] INFO  o.s.jmx.export.MBeanExporter 431 afterSingletonsInstantiated - Registering beans for JMX exposure on startup
+21:03:58.247 [restartedMain] INFO  org.apache.juli.logging.DirectJDKLog 179 log - Initializing ProtocolHandler ["https-jsse-nio-443"]
+21:03:58.248 [restartedMain] INFO  org.apache.juli.logging.DirectJDKLog 179 log - Starting ProtocolHandler ["https-jsse-nio-443"]
+21:03:58.256 [restartedMain] INFO  org.apache.juli.logging.DirectJDKLog 179 log - Using a shared selector for servlet write/read
+21:03:58.260 [restartedMain] INFO  org.apache.juli.logging.DirectJDKLog 179 log - Initializing ProtocolHandler ["http-nio-80"]
+21:03:58.263 [restartedMain] INFO  org.apache.juli.logging.DirectJDKLog 179 log - Using a shared selector for servlet write/read
+21:03:58.264 [restartedMain] INFO  org.apache.juli.logging.DirectJDKLog 179 log - Starting ProtocolHandler ["http-nio-80"]
+21:03:58.268 [restartedMain] INFO  o.s.b.c.e.t.TomcatEmbeddedServletContainer 201 start - Tomcat started on port(s): 443 (https) 80 (http)
+21:03:58.272 [restartedMain] INFO  o.s.boot.StartupInfoLogger 57 logStarted - Started Application in 5.194 seconds (JVM running for 381.65)
+21:04:01.070 [https-jsse-nio-443-exec-5] INFO  org.apache.juli.logging.DirectJDKLog 179 log - Initializing Spring FrameworkServlet 'dispatcherServlet'
+21:04:01.070 [https-jsse-nio-443-exec-5] INFO  o.s.web.servlet.FrameworkServlet 489 initServletBean - FrameworkServlet 'dispatcherServlet': initialization started
+21:04:01.078 [https-jsse-nio-443-exec-5] INFO  o.s.web.servlet.FrameworkServlet 508 initServletBean - FrameworkServlet 'dispatcherServlet': initialization completed in 8 ms
+21:04:01.125 [https-jsse-nio-443-exec-4] INFO  s.g.w.s.controller.UserController 35 login - 127.0.0.1 請求登入頁面
+21:04:01.140 [https-jsse-nio-443-exec-4] INFO  org.thymeleaf.TemplateEngine 825 initialize - [THYMELEAF] INITIALIZING TEMPLATE ENGINE
+21:04:01.143 [https-jsse-nio-443-exec-4] INFO  o.t.t.AbstractTemplateResolver 99 initialize - [THYMELEAF] INITIALIZING TEMPLATE RESOLVER: org.thymeleaf.spring4.templateresolver.SpringResourceTemplateResolver
+21:04:01.144 [https-jsse-nio-443-exec-4] INFO  o.t.t.AbstractTemplateResolver 110 initialize - [THYMELEAF] TEMPLATE RESOLVER INITIALIZED OK
+21:04:01.145 [https-jsse-nio-443-exec-4] INFO  o.t.m.AbstractMessageResolver 72 initialize - [THYMELEAF] INITIALIZING MESSAGE RESOLVER: org.thymeleaf.spring4.messageresolver.SpringMessageResolver
+21:04:01.145 [https-jsse-nio-443-exec-4] INFO  o.t.m.AbstractMessageResolver 78 initialize - [THYMELEAF] MESSAGE RESOLVER INITIALIZED OK
+21:04:01.146 [https-jsse-nio-443-exec-4] INFO  o.t.ConfigurationPrinterHelper 123 printConfiguration - [THYMELEAF] TEMPLATE ENGINE CONFIGURATION:
+[THYMELEAF] * Cache Factory implementation: org.thymeleaf.cache.StandardCacheManager
+[THYMELEAF] * Template modes:
+[THYMELEAF]     * XHTML
+[THYMELEAF]     * VALIDXHTML
+[THYMELEAF]     * VALIDXML
+[THYMELEAF]     * LEGACYHTML5
+[THYMELEAF]     * XML
+[THYMELEAF]     * HTML5
+[THYMELEAF] * Template resolvers (in order):
+[THYMELEAF]     * org.thymeleaf.spring4.templateresolver.SpringResourceTemplateResolver
+[THYMELEAF] * Message resolvers (in order):
+[THYMELEAF]     * org.thymeleaf.spring4.messageresolver.SpringMessageResolver
+[THYMELEAF] * Dialect [1 of 3]: org.thymeleaf.spring4.dialect.SpringStandardDialect
+[THYMELEAF]     * Prefix: "th"
+[THYMELEAF] * Dialect [2 of 3]: org.thymeleaf.extras.springsecurity4.dialect.SpringSecurityDialect
+[THYMELEAF]     * Prefix: "sec"
+[THYMELEAF] * Dialect [3 of 3]: nz.net.ultraq.thymeleaf.LayoutDialect
+[THYMELEAF]     * Prefix: "layout"
+[THYMELEAF] TEMPLATE ENGINE CONFIGURED OK
+21:04:01.147 [https-jsse-nio-443-exec-4] INFO  org.thymeleaf.TemplateEngine 838 initialize - [THYMELEAF] TEMPLATE ENGINE INITIALIZED
+21:04:16.073 [https-jsse-nio-443-exec-8] INFO  s.g.w.s.controller.UserController 35 login - 127.0.0.1 請求登入頁面
+21:04:31.089 [https-jsse-nio-443-exec-8] INFO  s.g.w.s.controller.UserController 35 login - 127.0.0.1 請求登入頁面
+21:04:46.073 [https-jsse-nio-443-exec-8] INFO  s.g.w.s.controller.UserController 35 login - 127.0.0.1 請求登入頁面
+21:05:01.063 [https-jsse-nio-443-exec-8] INFO  s.g.w.s.controller.UserController 35 login - 127.0.0.1 請求登入頁面
+21:05:16.062 [https-jsse-nio-443-exec-8] INFO  s.g.w.s.controller.UserController 35 login - 127.0.0.1 請求登入頁面
+21:05:31.063 [https-jsse-nio-443-exec-7] INFO  s.g.w.s.controller.UserController 35 login - 127.0.0.1 請求登入頁面
+21:05:46.084 [https-jsse-nio-443-exec-6] INFO  s.g.w.s.controller.UserController 35 login - 127.0.0.1 請求登入頁面
+21:06:01.062 [https-jsse-nio-443-exec-6] INFO  s.g.w.s.controller.UserController 35 login - 127.0.0.1 請求登入頁面
+21:06:16.055 [https-jsse-nio-443-exec-10] INFO  s.g.w.s.controller.UserController 35 login - 127.0.0.1 請求登入頁面
+21:06:31.059 [https-jsse-nio-443-exec-2] INFO  s.g.w.s.controller.UserController 35 login - 127.0.0.1 請求登入頁面
+21:06:46.052 [https-jsse-nio-443-exec-3] INFO  s.g.w.s.controller.UserController 35 login - 127.0.0.1 請求登入頁面
+21:07:01.088 [https-jsse-nio-443-exec-4] INFO  s.g.w.s.controller.UserController 35 login - 127.0.0.1 請求登入頁面
+21:07:16.082 [https-jsse-nio-443-exec-4] INFO  s.g.w.s.controller.UserController 35 login - 127.0.0.1 請求登入頁面
+21:07:31.058 [https-jsse-nio-443-exec-4] INFO  s.g.w.s.controller.UserController 35 login - 127.0.0.1 請求登入頁面
+21:07:46.073 [https-jsse-nio-443-exec-4] INFO  s.g.w.s.controller.UserController 35 login - 127.0.0.1 請求登入頁面
+21:08:01.076 [https-jsse-nio-443-exec-9] INFO  s.g.w.s.controller.UserController 35 login - 127.0.0.1 請求登入頁面
+21:08:16.082 [https-jsse-nio-443-exec-9] INFO  s.g.w.s.controller.UserController 35 login - 127.0.0.1 請求登入頁面
+21:08:31.064 [https-jsse-nio-443-exec-9] INFO  s.g.w.s.controller.UserController 35 login - 127.0.0.1 請求登入頁面
+21:08:46.059 [https-jsse-nio-443-exec-9] INFO  s.g.w.s.controller.UserController 35 login - 127.0.0.1 請求登入頁面
+21:09:01.060 [https-jsse-nio-443-exec-8] INFO  s.g.w.s.controller.UserController 35 login - 127.0.0.1 請求登入頁面
+21:09:16.054 [https-jsse-nio-443-exec-7] INFO  s.g.w.s.controller.UserController 35 login - 127.0.0.1 請求登入頁面
+21:09:31.071 [https-jsse-nio-443-exec-7] INFO  s.g.w.s.controller.UserController 35 login - 127.0.0.1 請求登入頁面
+21:09:46.059 [https-jsse-nio-443-exec-7] INFO  s.g.w.s.controller.UserController 35 login - 127.0.0.1 請求登入頁面
+21:10:01.060 [https-jsse-nio-443-exec-6] INFO  s.g.w.s.controller.UserController 35 login - 127.0.0.1 請求登入頁面
+21:10:16.079 [https-jsse-nio-443-exec-5] INFO  s.g.w.s.controller.UserController 35 login - 127.0.0.1 請求登入頁面
+21:10:31.081 [https-jsse-nio-443-exec-1] INFO  s.g.w.s.controller.UserController 35 login - 127.0.0.1 請求登入頁面
+21:10:46.063 [https-jsse-nio-443-exec-1] INFO  s.g.w.s.controller.UserController 35 login - 127.0.0.1 請求登入頁面
+21:11:01.069 [https-jsse-nio-443-exec-2] INFO  s.g.w.s.controller.UserController 35 login - 127.0.0.1 請求登入頁面
+21:11:16.060 [https-jsse-nio-443-exec-2] INFO  s.g.w.s.controller.UserController 35 login - 127.0.0.1 請求登入頁面
+21:11:31.058 [https-jsse-nio-443-exec-2] INFO  s.g.w.s.controller.UserController 35 login - 127.0.0.1 請求登入頁面
+21:11:46.059 [https-jsse-nio-443-exec-3] INFO  s.g.w.s.controller.UserController 35 login - 127.0.0.1 請求登入頁面
+21:12:01.074 [https-jsse-nio-443-exec-4] INFO  s.g.w.s.controller.UserController 35 login - 127.0.0.1 請求登入頁面
+21:12:16.058 [https-jsse-nio-443-exec-9] INFO  s.g.w.s.controller.UserController 35 login - 127.0.0.1 請求登入頁面
+21:12:31.073 [https-jsse-nio-443-exec-9] INFO  s.g.w.s.controller.UserController 35 login - 127.0.0.1 請求登入頁面
+21:12:46.083 [https-jsse-nio-443-exec-9] INFO  s.g.w.s.controller.UserController 35 login - 127.0.0.1 請求登入頁面
+21:13:01.068 [https-jsse-nio-443-exec-8] INFO  s.g.w.s.controller.UserController 35 login - 127.0.0.1 請求登入頁面
+21:13:16.070 [https-jsse-nio-443-exec-7] INFO  s.g.w.s.controller.UserController 35 login - 127.0.0.1 請求登入頁面
+21:13:31.082 [https-jsse-nio-443-exec-5] INFO  s.g.w.s.controller.UserController 35 login - 127.0.0.1 請求登入頁面
+21:13:46.083 [https-jsse-nio-443-exec-5] INFO  s.g.w.s.controller.UserController 35 login - 127.0.0.1 請求登入頁面
+21:14:01.070 [https-jsse-nio-443-exec-10] INFO  s.g.w.s.controller.UserController 35 login - 127.0.0.1 請求登入頁面
+21:14:16.076 [https-jsse-nio-443-exec-10] INFO  s.g.w.s.controller.UserController 35 login - 127.0.0.1 請求登入頁面
+21:14:31.077 [https-jsse-nio-443-exec-10] INFO  s.g.w.s.controller.UserController 35 login - 127.0.0.1 請求登入頁面
+21:14:46.067 [https-jsse-nio-443-exec-10] INFO  s.g.w.s.controller.UserController 35 login - 127.0.0.1 請求登入頁面
+21:15:01.078 [https-jsse-nio-443-exec-10] INFO  s.g.w.s.controller.UserController 35 login - 127.0.0.1 請求登入頁面
+21:15:16.058 [https-jsse-nio-443-exec-10] INFO  s.g.w.s.controller.UserController 35 login - 127.0.0.1 請求登入頁面
+21:15:31.068 [https-jsse-nio-443-exec-10] INFO  s.g.w.s.controller.UserController 35 login - 127.0.0.1 請求登入頁面
+21:15:46.065 [https-jsse-nio-443-exec-1] INFO  s.g.w.s.controller.UserController 35 login - 127.0.0.1 請求登入頁面
+21:16:01.071 [https-jsse-nio-443-exec-1] INFO  s.g.w.s.controller.UserController 35 login - 127.0.0.1 請求登入頁面
+21:16:16.058 [https-jsse-nio-443-exec-1] INFO  s.g.w.s.controller.UserController 35 login - 127.0.0.1 請求登入頁面
+21:16:31.066 [https-jsse-nio-443-exec-2] INFO  s.g.w.s.controller.UserController 35 login - 127.0.0.1 請求登入頁面
+21:16:46.060 [https-jsse-nio-443-exec-2] INFO  s.g.w.s.controller.UserController 35 login - 127.0.0.1 請求登入頁面
+21:17:01.065 [https-jsse-nio-443-exec-2] INFO  s.g.w.s.controller.UserController 35 login - 127.0.0.1 請求登入頁面
+21:17:16.065 [https-jsse-nio-443-exec-3] INFO  s.g.w.s.controller.UserController 35 login - 127.0.0.1 請求登入頁面
+21:17:31.055 [https-jsse-nio-443-exec-4] INFO  s.g.w.s.controller.UserController 35 login - 127.0.0.1 請求登入頁面
+21:17:46.057 [https-jsse-nio-443-exec-9] INFO  s.g.w.s.controller.UserController 35 login - 127.0.0.1 請求登入頁面
+21:18:01.079 [https-jsse-nio-443-exec-8] INFO  s.g.w.s.controller.UserController 35 login - 127.0.0.1 請求登入頁面
+21:18:16.059 [https-jsse-nio-443-exec-7] INFO  s.g.w.s.controller.UserController 35 login - 127.0.0.1 請求登入頁面
+21:18:31.070 [https-jsse-nio-443-exec-7] INFO  s.g.w.s.controller.UserController 35 login - 127.0.0.1 請求登入頁面
+21:18:46.069 [https-jsse-nio-443-exec-7] INFO  s.g.w.s.controller.UserController 35 login - 127.0.0.1 請求登入頁面
+21:19:01.057 [https-jsse-nio-443-exec-7] INFO  s.g.w.s.controller.UserController 35 login - 127.0.0.1 請求登入頁面
+21:19:16.056 [https-jsse-nio-443-exec-7] INFO  s.g.w.s.controller.UserController 35 login - 127.0.0.1 請求登入頁面
+21:19:31.063 [https-jsse-nio-443-exec-7] INFO  s.g.w.s.controller.UserController 35 login - 127.0.0.1 請求登入頁面
+21:19:46.074 [https-jsse-nio-443-exec-6] INFO  s.g.w.s.controller.UserController 35 login - 127.0.0.1 請求登入頁面
+21:20:01.071 [https-jsse-nio-443-exec-6] INFO  s.g.w.s.controller.UserController 35 login - 127.0.0.1 請求登入頁面
+21:20:16.062 [https-jsse-nio-443-exec-6] INFO  s.g.w.s.controller.UserController 35 login - 127.0.0.1 請求登入頁面
+21:20:31.084 [https-jsse-nio-443-exec-6] INFO  s.g.w.s.controller.UserController 35 login - 127.0.0.1 請求登入頁面
+21:20:46.065 [https-jsse-nio-443-exec-6] INFO  s.g.w.s.controller.UserController 35 login - 127.0.0.1 請求登入頁面
+21:21:01.094 [https-jsse-nio-443-exec-6] INFO  s.g.w.s.controller.UserController 35 login - 127.0.0.1 請求登入頁面
+21:21:16.078 [https-jsse-nio-443-exec-6] INFO  s.g.w.s.controller.UserController 35 login - 127.0.0.1 請求登入頁面
+21:21:31.070 [https-jsse-nio-443-exec-6] INFO  s.g.w.s.controller.UserController 35 login - 127.0.0.1 請求登入頁面
+21:21:46.077 [https-jsse-nio-443-exec-6] INFO  s.g.w.s.controller.UserController 35 login - 127.0.0.1 請求登入頁面
+21:22:01.065 [https-jsse-nio-443-exec-5] INFO  s.g.w.s.controller.UserController 35 login - 127.0.0.1 請求登入頁面
+21:22:16.053 [https-jsse-nio-443-exec-10] INFO  s.g.w.s.controller.UserController 35 login - 127.0.0.1 請求登入頁面
+21:22:31.062 [https-jsse-nio-443-exec-10] INFO  s.g.w.s.controller.UserController 35 login - 127.0.0.1 請求登入頁面
+21:22:46.064 [https-jsse-nio-443-exec-10] INFO  s.g.w.s.controller.UserController 35 login - 127.0.0.1 請求登入頁面
+21:23:01.067 [https-jsse-nio-443-exec-10] INFO  s.g.w.s.controller.UserController 35 login - 127.0.0.1 請求登入頁面
+21:23:16.071 [https-jsse-nio-443-exec-10] INFO  s.g.w.s.controller.UserController 35 login - 127.0.0.1 請求登入頁面
+21:23:31.070 [https-jsse-nio-443-exec-10] INFO  s.g.w.s.controller.UserController 35 login - 127.0.0.1 請求登入頁面
+21:23:46.056 [https-jsse-nio-443-exec-10] INFO  s.g.w.s.controller.UserController 35 login - 127.0.0.1 請求登入頁面
+21:24:01.085 [https-jsse-nio-443-exec-10] INFO  s.g.w.s.controller.UserController 35 login - 127.0.0.1 請求登入頁面
+21:24:16.054 [https-jsse-nio-443-exec-10] INFO  s.g.w.s.controller.UserController 35 login - 127.0.0.1 請求登入頁面
+21:24:31.063 [https-jsse-nio-443-exec-10] INFO  s.g.w.s.controller.UserController 35 login - 127.0.0.1 請求登入頁面
+21:24:46.054 [https-jsse-nio-443-exec-10] INFO  s.g.w.s.controller.UserController 35 login - 127.0.0.1 請求登入頁面
+21:25:01.053 [https-jsse-nio-443-exec-10] INFO  s.g.w.s.controller.UserController 35 login - 127.0.0.1 請求登入頁面
+21:25:16.063 [https-jsse-nio-443-exec-10] INFO  s.g.w.s.controller.UserController 35 login - 127.0.0.1 請求登入頁面
+21:25:31.063 [https-jsse-nio-443-exec-10] INFO  s.g.w.s.controller.UserController 35 login - 127.0.0.1 請求登入頁面

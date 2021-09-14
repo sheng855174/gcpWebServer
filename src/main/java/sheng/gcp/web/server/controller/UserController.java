@@ -51,7 +51,7 @@ public class UserController {
     @PostMapping("/forgotPassword")
     public String resetPassword(HttpServletRequest request) {
         LoggerOutputFormat.api_before(request,"post /forgotPassword");
-        try{
+        /*try{
             JSONObject data = HttpReceiver.receiveData(request);
             log.info(data.toString());
             // 比對資料
@@ -79,7 +79,7 @@ public class UserController {
         }catch (Exception e){
             LoggerOutputFormat.api_error(request,"post /forgotPassword",e);
             return "redirect:login?api_error";
-        }
+        }*/
         return "redirect:login?success_password";
     }
 
