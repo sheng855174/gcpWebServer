@@ -1384,3 +1384,4 @@
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.lang.Thread.run(Thread.java:748)
 
+23:16:27.399 [https-jsse-nio-443-exec-5] ERROR s.g.w.s.c.CustomDaoAuthenticationProvider 39 additionalAuthenticationChecks - sheng855174 密碼錯誤 : 0

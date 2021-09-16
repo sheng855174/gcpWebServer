@@ -1,0 +1,13 @@
+package sheng.gcp.web.server.model.goldbook.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+import sheng.gcp.web.server.model.goldbook.entity.Spending;
+
+@Repository
+@Transactional(value = "goldbookTransactionManager")
+public interface SpendingRepository extends JpaRepository<Spending, Long> {
+
+
+}
