@@ -20,4 +20,10 @@ public class MainController {
         return "main/index";
     }
 
+    @PreAuthorize("hasAnyAuthority('USER')")
+    @GetMapping({"blank"})
+    public String blank(HttpServletRequest request, Model model) {
+        LoggerOutputFormat.api_before(request, "/blank");
+        return "blank";
+    }
 }

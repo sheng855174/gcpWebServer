@@ -14,8 +14,12 @@ import org.springframework.security.core.session.SessionRegistry;
 import org.springframework.security.core.session.SessionRegistryImpl;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
+import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
+import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import sheng.gcp.web.server.service.goodbook.UserService;
+
+import javax.sql.DataSource;
 
 
 @Slf4j
@@ -28,6 +32,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private DataSource dataSource;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -42,6 +49,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                     ,"/dist/**"
                     ,"/plugins/**").permitAll()
                     .anyRequest().authenticated()
+                .and()
+                .rememberMe()
+                .rememberMeParameter("remember-me")
+                .tokenValiditySeconds(7 * 24 * 60 * 60)
+                .useSecureCookie(true)
+                .tokenRepository(this.persistentTokenRepository())
+                .userDetailsService(userService)
                 .and()
                     .formLogin()
                         .loginPage("/login")
@@ -87,5 +101,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         return new SessionRegistryImpl();
     }
 
-
+    @Bean
+    public PersistentTokenRepository persistentTokenRepository() {
+        JdbcTokenRepositoryImpl db = new JdbcTokenRepositoryImpl();
+        db.setDataSource(dataSource);
+        return db;
+    }
 }

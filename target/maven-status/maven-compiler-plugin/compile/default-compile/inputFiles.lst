@@ -8,10 +8,13 @@ C:\Users\Sheng\Desktop\gcpWebServer\src\main\java\sheng\gcp\web\server\common\Ht
 C:\Users\Sheng\Desktop\gcpWebServer\src\main\java\sheng\gcp\web\server\config\CustomDaoAuthenticationProvider.java
 C:\Users\Sheng\Desktop\gcpWebServer\src\main\java\sheng\gcp\web\server\common\HttpReceiver.java
 C:\Users\Sheng\Desktop\gcpWebServer\src\main\java\sheng\gcp\web\server\config\Config.java
+C:\Users\Sheng\Desktop\gcpWebServer\src\main\java\sheng\gcp\web\server\model\goldbook\repository\SpendingRepository.java
 C:\Users\Sheng\Desktop\gcpWebServer\src\main\java\sheng\gcp\web\server\service\goodbook\UserServiceImpl.java
 C:\Users\Sheng\Desktop\gcpWebServer\src\main\java\sheng\gcp\web\server\service\goodbook\UserService.java
+C:\Users\Sheng\Desktop\gcpWebServer\src\main\java\sheng\gcp\web\server\controller\SpeningController.java
 C:\Users\Sheng\Desktop\gcpWebServer\src\main\java\sheng\gcp\web\server\Application.java
 C:\Users\Sheng\Desktop\gcpWebServer\src\main\java\sheng\gcp\web\server\config\GoldBookDBConfig.java
+C:\Users\Sheng\Desktop\gcpWebServer\src\main\java\sheng\gcp\web\server\model\goldbook\entity\Spending.java
 C:\Users\Sheng\Desktop\gcpWebServer\src\main\java\sheng\gcp\web\server\common\Generater.java
 C:\Users\Sheng\Desktop\gcpWebServer\src\main\java\sheng\gcp\web\server\common\SmtpGmail.java
 C:\Users\Sheng\Desktop\gcpWebServer\src\main\java\sheng\gcp\web\server\controller\UserController.java
