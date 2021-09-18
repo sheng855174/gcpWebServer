@@ -14,3 +14,6 @@ v1.0.2-release
 
 v1.0.3-release
 契約修改
+
+v1.0.4-release
+帳務功能

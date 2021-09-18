@@ -97,7 +97,12 @@
                                     <p>全部帳本</p>
                                 </a>
                             </li>
-
+                            <li class="nav-item">
+                                <a href="/spendingManage/spendingShare" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>共享帳本設定</p>
+                                </a>
+                            </li>
                         </ul>
                     </li>
                     <li class="nav-item">
@@ -110,7 +115,7 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="../forms/general.html" class="nav-link">
+                                <a href="#" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>個人資料</p>
                                 </a>
@@ -139,7 +144,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="../forms/advanced.html" class="nav-link">
+                                <a href="#" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>關於</p>
                                 </a>
@@ -194,7 +199,8 @@
                         <div class="modal-footer">
                             <a href="#" class="btn btn-secondary" value="cancel"
                                data-dismiss="modal">取消</a>
-                            <input id="addSpendingConfirmBtn" type="submit" value="確定" class="btn btn-success float-right">
+                            <input id="addSpendingConfirmBtn" type="submit" value="確定"
+                                   class="btn btn-success float-right">
                         </div>
                     </div>
                 </div>
@@ -212,10 +218,10 @@
                         </div>
                         <div class="modal-body form-group">
                             <div class="form-group">
-                            <select id="type" class="form-control select2" style="width: 100%;">
-                                <option selected="selected">支出</option>
-                                <option>收入</option>
-                            </select>
+                                <select id="type" class="form-control select2" style="width: 100%;">
+                                    <option selected="selected">支出</option>
+                                    <option>收入</option>
+                                </select>
                             </div>
                             <input
                                     class="form-group form-control"
@@ -228,7 +234,35 @@
                         <div class="modal-footer">
                             <a href="#" class="btn btn-secondary" value="cancel"
                                data-dismiss="modal">取消</a>
-                            <input id="addTypeBtnConfirmBtn" type="submit" value="確定" class="btn btn-success float-right">
+                            <input id="addTypeBtnConfirmBtn" type="submit" value="確定"
+                                   class="btn btn-success float-right">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 分享帳本對話框 -->
+            <div id="shareSpendingBtnDialog" class="modal" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">請於一小時內分享此ID邀請朋友加入</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body form-group">
+                            <input
+                                    class="form-group form-control"
+                                    type="text"
+                                    id="shareSpendingID"
+                                    placeholder=""
+                                    disabled
+                            />
+                        </div>
+                        <div class="modal-footer">
+                            <a href="#" class="btn btn-success float-right" value="cancel"
+                               data-dismiss="modal">確定</a>
                         </div>
                     </div>
                 </div>
@@ -240,40 +274,46 @@
                     <h3 class="card-title">全部帳本</h3>
                 </div>
                 <div class="card-body">
-                <table id="dataTable" class="table table-bordered table-hover">
-                    <thead>
-                    <tr>
-                        <th>名稱</th>
-                        <th class="none">描述</th>
-                        <th class="none">收益</th>
-                        <th class="none">擁有者</th>
-                        <th class="none" style="width: 20%"></th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr th:each="spending,count : ${spendingList}" data-widget="expandable-table" aria-expanded="false">
-                        <td th:text="${spending.name}"></td>
-                        <td th:text="${spending.description}"></td>
-                        <td th:text="${spending.income}"></td>
-                        <td th:text="${spendingOwnList[count.index]}"></td>
-                        <td>
-                            <button th:onclick="'lookSpending(' + ${spending.id} + ')'" type="button" class="btn btn-info btn-sm form-group">
-                                查看帳本
-                            </button>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-                <div class="form-group">
-                    <button id="addSpendingBtn" type="button" class="btn btn-block btn-success btn-lg form-group"
-                            data-toggle="modal" data-target="#addSpendingDialog">
-                        新增帳本
-                    </button>
-                    <button id="addTypeBtn" type="button" class="btn btn-block btn-primary btn-lg form-group"
-                            data-toggle="modal" data-target="#addTypeBtnDialog">
-                        新增類別
-                    </button>
-                </div>
+                    <table id="dataTable" class="table table-bordered table-hover">
+                        <thead>
+                        <tr>
+                            <th>名稱</th>
+                            <th class="none">描述</th>
+                            <th class="none">收益</th>
+                            <th class="none">擁有者</th>
+                            <th class="none" style="width: 20%"></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="spending,count : ${spendingList}" data-widget="expandable-table"
+                            aria-expanded="false">
+                            <td th:text="${spending.name}"></td>
+                            <td th:text="${spending.description}"></td>
+                            <td th:text="${spending.income}"></td>
+                            <td th:text="${spendingOwnList[count.index]}"></td>
+                            <td>
+                                <button th:onclick="'shareSpending(' + ${spending.id} + ')'" type="button"
+                                        class="btn btn-warning btn-sm form-group">
+                                    分享帳本
+                                </button>
+                                <button th:onclick="'lookSpending(' + ${spending.id} + ')'" type="button"
+                                        class="btn btn-info btn-sm form-group">
+                                    查看帳本
+                                </button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <div class="form-group">
+                        <button id="addSpendingBtn" type="button" class="btn btn-block btn-success btn-lg form-group"
+                                data-toggle="modal" data-target="#addSpendingDialog">
+                            新增帳本
+                        </button>
+                        <button id="addTypeBtn" type="button" class="btn btn-block btn-primary btn-lg form-group"
+                                data-toggle="modal" data-target="#addTypeBtnDialog">
+                            新增類別
+                        </button>
+                    </div>
                 </div>
                 <!-- /.card-body -->
             </div>
@@ -363,6 +403,15 @@ $("#addTypeBtnConfirmBtn").click(function () {
 });
 function lookSpending(id){
     window.location.href = "/spendingManage/spendingDetail/" + id + "?month=" + (new Date().getMonth()+1);
+}
+function shareSpending(id){
+    var data = {
+        spending_id: id,
+    };
+    $.post("/spendingManage/spendingShare", data, function (result) {
+        $("#shareSpendingID").val(result);
+        $("#shareSpendingBtnDialog").modal('show');
+    });
 }
 </script>
 

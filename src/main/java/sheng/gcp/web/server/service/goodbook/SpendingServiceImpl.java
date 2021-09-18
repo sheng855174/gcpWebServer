@@ -3,14 +3,8 @@ package sheng.gcp.web.server.service.goodbook;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import sheng.gcp.web.server.model.goldbook.entity.IncomeType;
-import sheng.gcp.web.server.model.goldbook.entity.Spending;
-import sheng.gcp.web.server.model.goldbook.entity.SpendingItem;
-import sheng.gcp.web.server.model.goldbook.entity.SpendingOwner;
-import sheng.gcp.web.server.model.goldbook.repository.IncomeTypeRepository;
-import sheng.gcp.web.server.model.goldbook.repository.SpendingItemRepository;
-import sheng.gcp.web.server.model.goldbook.repository.SpendingOwnerRepository;
-import sheng.gcp.web.server.model.goldbook.repository.SpendingRepository;
+import sheng.gcp.web.server.model.goldbook.entity.*;
+import sheng.gcp.web.server.model.goldbook.repository.*;
 
 import java.util.List;
 
@@ -29,6 +23,9 @@ public class SpendingServiceImpl implements SpendingService{
 
     @Autowired
     private SpendingItemRepository spendingItemRepository;
+
+    @Autowired
+    private SpendingShareLinkRepository spendingShareLinkRepository;
 
     @Override
     public Spending save(Spending spending){
@@ -73,5 +70,20 @@ public class SpendingServiceImpl implements SpendingService{
     @Override
     public List<Object[]> getSpendingItemList(Long spending_id,int month){
         return spendingItemRepository.getSpendingItemList(spending_id,month);
+    }
+
+    @Override
+    public SpendingShareLink save(SpendingShareLink spendingShareLink){
+        return spendingShareLinkRepository.save(spendingShareLink);
+    }
+
+    @Override
+    public SpendingShareLink findOneSpendingShareLink(String id){
+        return spendingShareLinkRepository.findOne(id);
+    }
+
+    @Override
+    public SpendingOwner save(SpendingOwner spendingShareLink){
+        return spendingOwnerRepository.save(spendingShareLink);
     }
 }

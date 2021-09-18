@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import sheng.gcp.web.server.common.DateFormat;
 import sheng.gcp.web.server.common.HttpReceiver;
 import sheng.gcp.web.server.common.LoggerOutputFormat;
 import sheng.gcp.web.server.controller.tableObject.SpendingItemTable;
@@ -22,10 +23,7 @@ import sheng.gcp.web.server.service.goodbook.UserService;
 
 import javax.servlet.http.HttpServletRequest;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Controller
 @Slf4j
@@ -109,6 +107,20 @@ public class SpeningController {
             return "redirect:..?api_error";
         }
         return "spendingManage/spendingDetail";
+    }
+
+    @PreAuthorize("hasAnyAuthority('USER')")
+    @GetMapping({"/spendingManage/spendingShare"})
+    public String spendingShare(HttpServletRequest request, Model model) {
+        LoggerOutputFormat.api_before(request,"get /spendingManage/spendingShare");
+        try {
+            Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        }
+        catch (Exception e){
+            LoggerOutputFormat.api_error(request,"get /spendingManage/spendingShare",e);
+            return "redirect:..?api_error";
+        }
+        return "spendingManage/spendingShare";
     }
 
     @PreAuthorize("hasAnyAuthority('USER')")
@@ -198,4 +210,69 @@ public class SpeningController {
         }
         return "SUCCESS";
     }
+
+    @PreAuthorize("hasAnyAuthority('USER')")
+    @PostMapping({"/spendingManage/spendingShare"})
+    @ResponseBody
+    public String spendingSharePost(HttpServletRequest request, Model model) {
+        LoggerOutputFormat.api_before(request,"post /spendingManage/spendingShare");
+        try {
+            Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+            JSONObject data = HttpReceiver.receiveData(request);
+            log.info(data.toString());
+            // 判斷權限
+            if(spendingService.getSpendingOwn(data.getLong("spending_id"),auth.getName()) == null){
+                log.error("權限錯誤 : " + auth.getName() + ", " + data.getLong("spending_id"));
+                return "Fail";
+            }
+            UUID uuid = UUID.randomUUID();
+            String uuidString = uuid.toString();
+            SpendingShareLink spendingShareLink = new SpendingShareLink();
+            spendingShareLink.setId(uuidString);
+            spendingShareLink.setSpending_id(data.getLong("spending_id"));
+            spendingShareLink.setTime(new Date());
+            spendingShareLink.setStatus(1);
+            spendingShareLink = spendingService.save(spendingShareLink);
+            log.info("產生連結 : " + spendingShareLink);
+            return uuidString;
+        }catch (Exception e){
+            LoggerOutputFormat.api_error(request,"post /spendingManage/spendingShare",e);
+            return "Fail";
+        }
+    }
+
+    @PreAuthorize("hasAnyAuthority('USER')")
+    @PostMapping({"/spendingManage/spendingJoin"})
+    @ResponseBody
+    public String spendingJoin(HttpServletRequest request, Model model) {
+        LoggerOutputFormat.api_before(request,"post /spendingManage/spendingJoin");
+        try {
+            Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+            JSONObject data = HttpReceiver.receiveData(request);
+            log.info(data.toString());
+            String uuid = data.getString("shareSpendingID");
+            SpendingShareLink spendingShareLink = spendingService.findOneSpendingShareLink(uuid);
+            Date final_time = DateFormat.lastHours(spendingShareLink.getTime());
+            if(spendingShareLink != null && spendingShareLink.getStatus()>0
+                    && DateFormat.belongCalendar(new Date(), spendingShareLink.getTime(), final_time)){
+                SpendingOwner spendingOwner = new SpendingOwner();
+                spendingOwner.setUsername(auth.getName());
+                spendingOwner.setSpending_id(spendingShareLink.getSpending_id());
+                spendingOwner = spendingService.save(spendingOwner);
+                spendingShareLink.setStatus(0);
+                spendingService.save(spendingShareLink);
+                log.info("加入帳本 : " + spendingOwner);
+                return "SUCCESS";
+            }
+            else {
+                log.info("連結無效");
+                return "LINK_EMPTY";
+            }
+
+        }catch (Exception e){
+            LoggerOutputFormat.api_error(request,"post /spendingManage/spendingJoin",e);
+            return "Fail";
+        }
+    }
+
 }
