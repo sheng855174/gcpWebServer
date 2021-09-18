@@ -5,14 +5,14 @@ import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Getter
 @Setter
 @ToString
 @Table( name = "Spending",
-        indexes = {@Index(name = "index_name", columnList="name", unique=false),
-                @Index(name = "index_username", columnList="username", unique=false),})
+        indexes = {@Index(name = "index_name", columnList="name", unique=false)})
 public class Spending {
 
     @Id
@@ -23,7 +23,14 @@ public class Spending {
     @Column(name = "name", nullable = false)
     private String name;
 
-    @Column(name = "username", nullable = false)
-    private String username;
+    @Column(name = "description", length = 1024, nullable = false)
+    private String description;
+
+    @Column(name = "income", nullable = false)
+    private int income ;
+
+    @OneToMany(targetEntity= SpendingOwner.class,cascade={CascadeType.ALL},fetch = FetchType.EAGER)
+    @JoinColumn(name = "spending_id")
+    private Set<SpendingOwner> spendingOwners;
 
 }

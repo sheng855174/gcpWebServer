@@ -52,7 +52,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and()
                 .rememberMe()
                 .rememberMeParameter("remember-me")
-                .tokenValiditySeconds(7 * 24 * 60 * 60)
+                .tokenValiditySeconds(30 * 24 * 60 * 60)
                 .useSecureCookie(true)
                 .tokenRepository(this.persistentTokenRepository())
                 .userDetailsService(userService)

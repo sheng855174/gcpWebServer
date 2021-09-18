@@ -19,6 +19,12 @@
     <link rel="stylesheet" href="/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="/dist/css/adminlte.min.css">
+    <!-- daterange picker -->
+    <link rel="stylesheet" href="/plugins/daterangepicker/daterangepicker.css">
+    <!-- Bootstrap Color Picker -->
+    <link rel="stylesheet" href="/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css">
+    <!-- Tempusdominus Bootstrap 4 -->
+    <link rel="stylesheet" href="/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
 </head>
 <body class="hold-transition sidebar-mini">
 <!-- Site wrapper -->
@@ -157,123 +163,166 @@
     <div class="content-wrapper">
         <!-- Main content -->
         <section class="content">
-            <!-- spending_success -->
-            <font th:if="${param.spending_success}" style="color:green" class="text-xl font-semibold text-center">新增帳本成功!</font>
-            <!-- addIncomeType_success -->
-            <font th:if="${param.addIncomeType_success}" style="color:green" class="text-xl font-semibold text-center">新增類別成功!</font>
+            <!-- success -->
+            <font th:if="${param.success}" style="color:green" class="text-xl font-semibold text-center">新增收支成功!</font>
             <!-- api_error -->
             <font th:if="${param.api_error}" style="color:red" class="text-xl font-semibold text-center">未知錯誤，請稍後再試。(操作異常或是網路異常)</font>
 
+
             <br><br>
-            <!-- 新增帳本對話框 -->
-            <div id="addSpendingDialog" class="modal" tabindex="-1" role="dialog">
+            <!-- 新增收入 -->
+            <div id="addItemBtnDialog" class="modal" tabindex="-1" role="dialog">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title">新增帳本</h5>
+                            <h5 class="modal-title">新增收入</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body form-group">
+                            <div class="form-group input-group date" id="reservationdatetime" data-target-input="nearest">
+                                <input type="text" class="form-control datetimepicker-input" data-target="#reservationdatetime"/>
+                                <div class="input-group-append" data-target="#reservationdatetime" data-toggle="datetimepicker">
+                                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <select id="type" class="form-group form-control select2" style="width: 100%;">
+                                    <option th:each="income : ${incomes}"
+                                    th:text="${income.description}"
+                                    th:value="${income.id}"></option>
+                                </select>
+                            </div>
                             <input
                                     class="form-group form-control"
                                     type="text"
-                                    id="spending_name"
-                                    placeholder="請輸入記帳本名稱"
-                                    required
+                                    id="description"
+                                    placeholder="請輸入描述"
                             />
                             <input
                                     class="form-group form-control"
-                                    type="text"
-                                    id="spending_description"
-                                    placeholder="請輸入記帳本描述"
+                                    onkeyup="value=value.replace(/[^\d.]/g,'')"
+                                    type="number"
+                                    id="income"
+                                    placeholder="請輸入收入"
+                                    value="0"
                                     required
                             />
                         </div>
                         <div class="modal-footer">
                             <a href="#" class="btn btn-secondary" value="cancel"
                                data-dismiss="modal">取消</a>
-                            <input id="addSpendingConfirmBtn" type="submit" value="確定" class="btn btn-success float-right">
+                            <input id="addItemBtnConfirmBtn" type="submit" value="確定" class="btn btn-success float-right">
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- 新增類別對話框 -->
-            <div id="addTypeBtnDialog" class="modal" tabindex="-1" role="dialog">
+            <!-- 新增支出 -->
+            <div id="支出Dialog" class="modal" tabindex="-1" role="dialog">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title">新增類別</h5>
+                            <h5 class="modal-title">新增支出</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body form-group">
+                            <div class="form-group input-group date" id="expense_reservationdatetime" data-target-input="nearest">
+                                <input type="text" class="form-control datetimepicker-input" data-target="#expense_reservationdatetime"/>
+                                <div class="input-group-append" data-target="#expense_reservationdatetime" data-toggle="datetimepicker">
+                                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                </div>
+                            </div>
                             <div class="form-group">
-                            <select id="type" class="form-control select2" style="width: 100%;">
-                                <option selected="selected">支出</option>
-                                <option>收入</option>
-                            </select>
+                                <select id="expense_type" class="form-group form-control select2" style="width: 100%;">
+                                    <option th:each="expense : ${expenses}"
+                                            th:text="${expense.description}"
+                                            th:value="${expense.id}"></option>
+                                </select>
                             </div>
                             <input
                                     class="form-group form-control"
                                     type="text"
-                                    id="type_name"
-                                    placeholder="請輸入類別名稱"
+                                    id="expense_description"
+                                    placeholder="請輸入描述"
+                            />
+                            <input
+                                    class="form-group form-control"
+                                    onkeyup="value=value.replace(/[^\d.]/g,'')"
+                                    type="number"
+                                    id="expense"
+                                    placeholder="請輸入支出"
+                                    value="0"
                                     required
                             />
                         </div>
                         <div class="modal-footer">
                             <a href="#" class="btn btn-secondary" value="cancel"
                                data-dismiss="modal">取消</a>
-                            <input id="addTypeBtnConfirmBtn" type="submit" value="確定" class="btn btn-success float-right">
+                            <input id="addItemExpenseBtnConfirmBtn" type="submit" value="確定" class="btn btn-success float-right">
                         </div>
                     </div>
                 </div>
+            </div>
+
+            <div class="form-group">
+                <div class="form-group">
+                    <select id="month" class="form-group form-control select2" style="width: 100%;">
+                        <option value="1">1月</option>
+                        <option value="2">2月</option>
+                        <option value="3">3月</option>
+                        <option value="4">4月</option>
+                        <option value="5">5月</option>
+                        <option value="6">6月</option>
+                        <option value="7">7月</option>
+                        <option value="8">8月</option>
+                        <option value="9">9月</option>
+                        <option value="10">10月</option>
+                        <option value="11">11月</option>
+                        <option value="12">12月</option>
+                    </select>
+                </div>
+                <button type="button" class="btn btn-block btn-success btn-lg form-group"
+                        data-toggle="modal" data-target="#addItemBtnDialog">
+                    新增收入
+                </button>
+                <button type="button" class="btn btn-block btn-danger btn-lg form-group"
+                        data-toggle="modal" data-target="#支出Dialog">
+                    新增支出
+                </button>
             </div>
 
             <!-- 全部帳本 -->
             <div class="card card-primary">
                 <div class="card-header">
-                    <h3 class="card-title">全部帳本</h3>
+                    <h3 id="spendingID" class="card-title" th:text="${spending.id}"></h3>
+                    <h3 class="card-title" th:text="'-' + ${spending.name}"></h3>
                 </div>
                 <div class="card-body">
                 <table id="dataTable" class="table table-bordered table-hover">
                     <thead>
                     <tr>
-                        <th>名稱</th>
-                        <th class="none">描述</th>
+                        <th>日期</th>
+                        <th>類別</th>
+                        <th>備註</th>
                         <th class="none">收益</th>
-                        <th class="none">擁有者</th>
-                        <th class="none" style="width: 20%"></th>
+                        <th class="none">新增者</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="spending,count : ${spendingList}" data-widget="expandable-table" aria-expanded="false">
-                        <td th:text="${spending.name}"></td>
-                        <td th:text="${spending.description}"></td>
-                        <td th:text="${spending.income}"></td>
-                        <td th:text="${spendingOwnList[count.index]}"></td>
-                        <td>
-                            <button th:onclick="'lookSpending(' + ${spending.id} + ')'" type="button" class="btn btn-info btn-sm form-group">
-                                查看帳本
-                            </button>
-                        </td>
+                    <tr th:each="spendingItem : ${spendingItems}" data-widget="expandable-table" aria-expanded="false">
+                        <td th:text="${spendingItem.date}"></td>
+                        <td th:text="${spendingItem.type_name}"></td>
+                        <td th:text="${spendingItem.remark}"></td>
+                        <td th:text="${spendingItem.income}"></td>
+                        <td th:text="${spendingItem.nickname}"></td>
                     </tr>
                     </tbody>
                 </table>
-                <div class="form-group">
-                    <button id="addSpendingBtn" type="button" class="btn btn-block btn-success btn-lg form-group"
-                            data-toggle="modal" data-target="#addSpendingDialog">
-                        新增帳本
-                    </button>
-                    <button id="addTypeBtn" type="button" class="btn btn-block btn-primary btn-lg form-group"
-                            data-toggle="modal" data-target="#addTypeBtnDialog">
-                        新增類別
-                    </button>
-                </div>
+
                 </div>
                 <!-- /.card-body -->
             </div>
@@ -318,6 +367,17 @@
 <script src="/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 <!-- Select2 -->
 <script src="/plugins/select2/js/select2.full.min.js"></script>
+<!-- date-range-picker -->
+<script src="/plugins/daterangepicker/daterangepicker.js"></script>
+<!-- InputMask -->
+<script src="/plugins/moment/moment.min.js"></script>
+<script src="/plugins/inputmask/jquery.inputmask.min.js"></script>
+<!-- bootstrap color picker -->
+<script src="/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
+<!-- Tempusdominus Bootstrap 4 -->
+<script src="/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+
+
 <script>
 $(function () {
     $('#dataTable').DataTable({
@@ -333,37 +393,60 @@ $(function () {
     });
     //Initialize Select2 Elements
     var select2 = $(".select2").select2();
-    $('.select2bs4').select2({theme: 'bootstrap4'})
+    $('.select2bs4').select2({theme: 'bootstrap4'});
+    //Date and time picker
+    $('#reservationdatetime')
+    .datetimepicker({
+        icons: { time: 'far fa-clock' },
+        stepping: 1,
+        defaultDate: new Date(),
+        format: "YYYY-MM-DD HH:mm:ss",
+    });
+    $('#expense_reservationdatetime')
+    .datetimepicker({
+        icons: { time: 'far fa-clock' },
+        stepping: 1,
+        defaultDate: new Date(),
+        format: "YYYY-MM-DD HH:mm:ss",
+    });
+    // 月份設定
+    $("#month").val( (new Date().getMonth()+1 ) );
+    $("#month").change();
 });
-$("#addSpendingConfirmBtn").click(function () {
+// 新增收入
+$("#addItemBtnConfirmBtn").click(function () {
     var data = {
-        spending_name: $("#spending_name").val(),
-        spending_description: $("#spending_description").val(),
+        type_id: $("#type").val(),
+        description: $("#description").val(),
+        income: $("#income").val(),
+        spending_id: $("#spendingID").text(),
+        date: $("#reservationdatetime").data('date'),
     };
-    $.post("/spendingManage/addSpending", data, function (result) {
+    $.post("/spendingManage/addItem", data, function (result) {
         if (result == "SUCCESS") {
-            window.location.href = "?spending_success";
+            window.location.href = "?success" + "&month=" + + (new Date().getMonth()+1);
         } else {
-            window.location.href = "?api_error";
+            window.location.href = "?api_error" + "&month=" + + (new Date().getMonth()+1);
         }
     });
 });
-$("#addTypeBtnConfirmBtn").click(function () {
+// 新增支出
+$("#addItemExpenseBtnConfirmBtn").click(function () {
     var data = {
-        type: $("#type").val(),
-        type_name: $("#type_name").val(),
+        type_id: $("#expense_type").val(),
+        description: $("#expense_description").val(),
+        income: $("#expense").val(),
+        spending_id: $("#spendingID").text(),
+        date: $("#expense_reservationdatetime").data('date'),
     };
-    $.post("/spendingManage/addIncomeType", data, function (result) {
+    $.post("/spendingManage/addItem", data, function (result) {
         if (result == "SUCCESS") {
-            window.location.href = "?addIncomeType_success";
+            window.location.href = "?success" + "&month=" + + (new Date().getMonth()+1);
         } else {
-            window.location.href = "?api_error";
+            window.location.href = "?api_error" + "&month=" + + (new Date().getMonth()+1);
         }
     });
 });
-function lookSpending(id){
-    window.location.href = "/spendingManage/spendingDetail/" + id + "?month=" + (new Date().getMonth()+1);
-}
 </script>
 
 </body>
