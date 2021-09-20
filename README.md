@@ -17,3 +17,6 @@ v1.0.3-release
 
 v1.0.4-release
 帳務功能
+
+v1.0.5-release
+登入機制記憶

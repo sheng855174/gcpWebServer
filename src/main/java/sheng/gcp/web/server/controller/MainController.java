@@ -17,8 +17,7 @@ public class MainController {
     @GetMapping({"/", "/index","/main/index"})
     public String index(HttpServletRequest request, Model model) {
         LoggerOutputFormat.api_before(request, "/index");
-        return "spendingManage/spending";
+        return "index";
     }
-
 
 }
