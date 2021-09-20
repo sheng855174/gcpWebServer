@@ -30,7 +30,7 @@ public class GoldBookDBConfig {
 
     final private static String username = "goldbook";
     final private static String password = "goldbook520";
-    final private static String url = "jdbc:mysql://localhost:3306/goldbook";
+    final private static String url = "jdbc:mysql://localhost:3306/goldbook?autoReconnect=true";
     final private static String driverClassName = "com.mysql.jdbc.Driver";
 
     @Primary

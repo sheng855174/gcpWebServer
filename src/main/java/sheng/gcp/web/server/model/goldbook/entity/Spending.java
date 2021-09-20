@@ -11,7 +11,7 @@ import java.util.Set;
 @Getter
 @Setter
 @ToString
-@Table( name = "Spending",
+@Table( name = "spending",
         indexes = {@Index(name = "index_name", columnList="name", unique=false)})
 public class Spending {
 

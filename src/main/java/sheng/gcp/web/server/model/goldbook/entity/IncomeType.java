@@ -10,7 +10,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @ToString
-@Table( name = "IncomeType",
+@Table( name = "incometype",
         indexes = {@Index(name = "index_type", columnList="type", unique=false),})
 public class IncomeType {
 

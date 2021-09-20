@@ -11,7 +11,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @ToString
-@Table( name = "SpendingOwner",
+@Table( name = "spendingowner",
         indexes = {@Index(name = "index_username", columnList="username", unique=false),
                 @Index(name = "index_spending_id", columnList="spending_id", unique=false),})
 public class SpendingOwner {

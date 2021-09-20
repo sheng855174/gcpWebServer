@@ -12,7 +12,7 @@ import java.util.Set;
 @Getter
 @Setter
 @ToString
-@Table( name = "SpendingShareLink",
+@Table( name = "spendingsharelink",
         indexes = {@Index(name = "index_spending_id", columnList="spending_id", unique=false)})
 public class SpendingShareLink {
 

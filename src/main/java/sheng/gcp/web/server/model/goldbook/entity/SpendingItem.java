@@ -12,7 +12,7 @@ import java.util.Date;
 @Getter
 @Setter
 @ToString
-@Table( name = "SpendingItem",
+@Table( name = "spendingitem",
         indexes = {@Index(name = "index_spending_id", columnList="spending_id", unique=false),
                 @Index(name = "index_type_id", columnList="type_id", unique=false),})
 public class SpendingItem {
