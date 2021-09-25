@@ -30,7 +30,7 @@ public class GoldBookDBConfig {
 
     final private static String username = "goldbook";
     final private static String password = "goldbook520";
-    final private static String url = "jdbc:mysql://localhost:3306/goldbook?autoReconnect=true";
+    final private static String url = "jdbc:mysql://localhost:3306/goldbook";
     final private static String driverClassName = "com.mysql.jdbc.Driver";
 
     @Primary
@@ -63,7 +63,7 @@ public class GoldBookDBConfig {
         Properties properties = new Properties();
         properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5InnoDBDialect");
         properties.setProperty("hibernate.hbm2ddl.auto", "update");
-        properties.setProperty("hibernate.ejb.entitymanager_factory_name", "endblockEntityManager");
+        properties.setProperty("hibernate.ejb.entitymanager_factory_name", "goldbookEntityManager");
         properties.setProperty("hibernate.autoReconnect", "true");
         properties.setProperty("hibernate.autoReconnectForPools", "true");
         properties.setProperty("hibernate.is-connection-validation-required", "true");

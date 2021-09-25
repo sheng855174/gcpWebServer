@@ -20,3 +20,6 @@ v1.0.4-release
 
 v1.0.5-release
 登入機制記憶
+
+v1.0.6-release
+帳本細項版面修正

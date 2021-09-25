@@ -19,6 +19,14 @@
     <link rel="stylesheet" href="/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="/dist/css/adminlte.min.css">
+    <style>
+    .navbar {
+      overflow: hidden;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+    </style>
 </head>
 <body class="hold-transition sidebar-mini">
 <!-- Site wrapper -->
@@ -32,16 +40,10 @@
                 <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
             </li>
         </ul>
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-                <a href="/logout" class="btn btn-block btn-primary">登出</a>
-            </li>
-        </ul>
     </nav>
-    <!-- /.navbar -->
 
     <!-- Main Sidebar Container -->
-    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <aside class="position-fixed main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand Logo -->
         <a href="../../index3.html" class="brand-link">
             <img src="../../dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
@@ -151,11 +153,18 @@
                             </li>
                         </ul>
                     </li>
+                    <li style="margin-left:5px">
+                        <a href="/logout" class="nav-link">
+                            <i class="nav-icon fas fa-door-open"></i>
+                            <p>
+                                登出
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                        </a>
+                    </li>
                 </ul>
             </nav>
-            <!-- /.sidebar-menu -->
         </div>
-        <!-- /.sidebar -->
     </aside>
 
     <!-- Content Wrapper. Contains page content -->
@@ -321,17 +330,7 @@
         </section>
         <!-- /.content -->
     </div>
-    <!-- /.content-wrapper -->
-    <footer class="main-footer">
-        <div class="float-right d-none d-sm-block"><b>Version</b> 3.1.0</div>
-        <strong>如有任何問題，請來信sheng855174@gmail.com</strong>
-    </footer>
 
-    <!-- Control Sidebar -->
-    <aside class="control-sidebar control-sidebar-dark">
-        <!-- Control sidebar content goes here -->
-    </aside>
-    <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
 
@@ -376,6 +375,7 @@ $(function () {
     $('.select2bs4').select2({theme: 'bootstrap4'})
 });
 $("#addSpendingConfirmBtn").click(function () {
+    $("#addSpendingConfirmBtn").attr("disabled", true);
     var data = {
         spending_name: $("#spending_name").val(),
         spending_description: $("#spending_description").val(),
@@ -386,9 +386,11 @@ $("#addSpendingConfirmBtn").click(function () {
         } else {
             window.location.href = "?api_error";
         }
+        $("#addSpendingConfirmBtn").attr("disabled", false);
     });
 });
 $("#addTypeBtnConfirmBtn").click(function () {
+    $("#addTypeBtnConfirmBtn").attr("disabled", true);
     var data = {
         type: $("#type").val(),
         type_name: $("#type_name").val(),
@@ -399,10 +401,15 @@ $("#addTypeBtnConfirmBtn").click(function () {
         } else {
             window.location.href = "?api_error";
         }
+        $("#addTypeBtnConfirmBtn").attr("disabled", false);
     });
 });
 function lookSpending(id){
-    window.location.href = "/spendingManage/spendingDetail/" + id + "?month=" + (new Date().getMonth()+1);
+    var month = sessionStorage.getItem('month');
+    if(month == null){
+        month = (new Date().getMonth()+1) ;
+    }
+    window.location.href = "/spendingManage/spendingDetail/" + id + "?month=" + month;
 }
 function shareSpending(id){
     var data = {
@@ -414,6 +421,5 @@ function shareSpending(id){
     });
 }
 </script>
-
 </body>
 </html>
