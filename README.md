@@ -23,3 +23,6 @@ v1.0.5-release
 
 v1.0.6-release
 帳本細項版面修正
+
+v1.0.7-release
+帳本版面修正

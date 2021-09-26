@@ -51,7 +51,7 @@
     <!-- Main Sidebar Container -->
     <aside class="position-fixed main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand Logo -->
-        <a href="../../index3.html" class="brand-link">
+        <a href="#" class="brand-link">
             <img src="../../dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
                  style="opacity: 0.8;"/>
             <span class="brand-text font-weight-light">情侶契約書</span>
@@ -308,8 +308,9 @@
 
             <!-- 全部帳本 -->
             <div >
-                <h3 id="spendingID" class="card-title" th:text="${spending.id}" style="visibility:hidden"></h3>
-                <h3 th:text="${spending.name}"></h3>
+                <h3 id="spendingID" class="card-title" th:text="${spending.id}" style="display:none"></h3>
+                <h3 th:text="${spending.name}"></h3><br>
+                <h3 th:text="'收益 : ' + ${spending.income}"></h3>
             </div>
             <!-- /.card -->
             <table id="dataTable" class="table table-hover">
